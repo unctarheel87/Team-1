@@ -7,7 +7,6 @@ var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
-console.log('hello')
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
