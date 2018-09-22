@@ -5,5 +5,11 @@ module.exports = function(app) {
     db.User.findAll({}).then(function(response) {
       res.json(response);
     });
+    db.Interest.findAll({}).then(function(response) {
+      res.json(response);
+    });
+    db.Message.findAll({}).then(function(response) {
+      res.json(response);
+    });
   });
 };
