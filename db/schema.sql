@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS `penpal_db`;
+CREATE DATABASE `penpal_db`;

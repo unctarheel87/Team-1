@@ -23,13 +23,10 @@
         "no-unused-vars": "error",
         "camelcase": "error",
         "indent": [
-            "error",
+            "warning",
             2
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "linebreak-style": 0,
         "quotes": [
             "error",
             "double"
