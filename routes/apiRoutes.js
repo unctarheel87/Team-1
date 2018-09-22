@@ -1,15 +1,8 @@
 var db = require("../models");
+var path = require('path');
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    db.User.findAll({}).then(function(response) {
-      res.json(response);
-    });
-    // db.Interest.findAll({}).then(function(response) {
-    //   res.json(response);
-    // });
-    // db.Message.findAll({}).then(function(response) {
-    //   res.json(response);
-    // });
+    res.send('index.html');
   });
 };
