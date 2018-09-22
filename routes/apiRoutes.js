@@ -7,7 +7,11 @@
 
 // go use index.js to fetch all models (all .js files) in the models folder and put them in the db.
 var db = require("../models");
+<<<<<<< HEAD
 var express = require('express');
+=======
+var path = require('path');
+>>>>>>> f12c0a1e140149acc375235856c227425b7924bd
 
 // Routes
 // =============================================================
@@ -19,6 +23,7 @@ module.exports = function(app) {
   // If we want something to be guaranteed to happen after the query, we'll use
   // the .then function
   app.get("/", function(req, res) {
+<<<<<<< HEAD
         db.User.findAll({}).then(function(results){
             // results are available to us inside the .then
             
@@ -27,6 +32,12 @@ module.exports = function(app) {
         }).catch(function(error) {
             throw error;
         }); 
+=======
+    db.User.find({}).then(response => {
+      console.log(response);
+    })
+    res.send('index.html');
+>>>>>>> f12c0a1e140149acc375235856c227425b7924bd
   });
 
   // add a burger
