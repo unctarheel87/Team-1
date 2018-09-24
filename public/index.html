@@ -12,12 +12,12 @@
 		<div id="app">
 			<p>{{ message }}</p>
 			<button v-on:click="getData2()">Change</button>
-    </div>
-    <form method="POST">
+    <form v-on:submit.prevent="handleSubmit">
       <input name="username">
       <input name="password">
       <button type="submit">Go</button>
     </form>
+  </div>
 
 		<!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
