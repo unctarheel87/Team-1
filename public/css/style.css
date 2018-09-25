@@ -1,3 +1,22 @@
-body    {
+nav {
+    z-index: 1;
+}
+
+
+#loginback  {
     background: url("../images/map.jpg")
+}
+
+#profileback,
+#chatback  {
+    background-color: #fffde7
+}
+
+#basic-info  {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #c5e1a5;
+    min-height: 100vh;
+    /* z-index: 2; */
+    padding-top: 20px;
 }
