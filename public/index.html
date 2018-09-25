@@ -6,9 +6,22 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/css/materialize.css" />
-    <script src="main.js"></script>
 </head>
-<body>
+	<body>
     <h1>Welcome to our home page!</h1>
-</body>
+		<div id="app">
+			<p>{{ message }}</p>
+			<button v-on:click="getData2()">Change</button>
+    <form v-on:submit.prevent="handleSubmit">
+      <input name="username">
+      <input name="password">
+      <button type="submit">Go</button>
+    </form>
+  </div>
+
+		<!--Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
 </html>
