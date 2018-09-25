@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Message.associate = function(models) {
     // associations can be defined here
-    console.log(models);;
+    console.log(models);
   };
 
   return Message;

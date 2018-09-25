@@ -61,7 +61,7 @@ router.put("/api/users/:id", (req, res) => {
     username: req.body.username,
     password: req.body.password
   };
-  db.User.update(newUser, { 
+  db.User.update(newUser, {
     where: { id: req.params.id }
   })
     .then(response => {
