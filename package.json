@@ -1,13 +1,14 @@
 {
-  "name": "node-handlebars-sequelize-boilerplate",
+  "name": "team-1-pen-pal",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
+  "description": "International Pen Pal App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js",
     "lint": "eslint **/*.js --quiet",
-    "fix": "eslint --fix ."
+    "fix": "eslint --fix .",
+    "test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit"
   },
   "license": "ISC",
   "dependencies": {
