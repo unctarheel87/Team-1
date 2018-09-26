@@ -27,25 +27,71 @@
                 <i class="large material-icons">account_circle</i>
                 <!-- Modal Trigger -->
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Login</a>
-            <!-- Modal Structure -->
+            <!-- Login Modal Structure -->
                 <div id="modal1" class="modal">
                 <div class="modal-content">
-                    <h4>Modal Header</h4>
-                    <p>A bunch of text</p>
+                    <h4>Welcome Back!</h4>
+                    <div class="row">
+                        <form class="center-align input-field col s6">
+                            <input id="username" type="text" class="validate">
+                            <label for="username">Username</label>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Login</a>
                 </div>
                 </div>
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Register</a>
-            <!-- Modal Structure -->
-            <div id="modal1" class="modal">
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Register</a>
+            <!-- Register Modal Structure -->
+            <div id="modal2" class="modal">
                 <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+                    <nav>
+                        <div class="nav-wrapper cyan darken-2">
+                            <div class="col s12">
+                                <a href="#!" class="breadcrumb">Step 1</a>
+                                <!-- Step 2 will make the user select their top 5-10 interests -->
+                                <a href="#!" class="breadcrumb">Step 2</a>
+                                <!-- Result stage shows their pen pal match -->
+                                <a href="#!" class="breadcrumb">Result!</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <br>
+                    <h4>Welcome!</h4>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>     
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="username" type="text" class="validate">
+                            <label for="username">Username</label>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Join Us!</a>
                 </div>
             </div>
             </div>
@@ -56,6 +102,7 @@
     
         
       <!--JavaScript at end of body for optimized loading-->
+      <script src="https://code.jquery.com/jquery.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="js/login.js"></script>
     </body>
