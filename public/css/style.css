@@ -13,8 +13,8 @@ nav {
 }
 
 #basic-info  {
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
     background-color: #c5e1a5;
     min-height: 100vh;
     /* z-index: 2; */
