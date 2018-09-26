@@ -3,10 +3,6 @@ var db = require("../models");
 var passport = require("../config/passport");
 var isAutenticated = require("../config/middleware/isAuthenticated");
 
-router.get("/", (req, res) => {
-  res.sendFile("index.html");
-});
-
 router.get("/api/users", (req, res) => {
   db.User.findAll({})
     .then(response => {
@@ -46,6 +42,41 @@ router.post("/api/users", (req, res) => {
     img: req.body.img
   };
   db.User.create(newUser)
+    .then(response => {
+      console.log(response);
+      res.status(200).end();
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
+//create interest
+router.post("/api/interests", (req, res) => {
+  const newInterest = {
+    interest: req.body.interest,
+    userId: req.body.userId
+  };
+  console.log(newInterest);
+  db.Interest.create(newInterest)
+    .then(response => {
+      console.log(response);
+      res.status(200).end();
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
+//create message
+router.post("/api/messages", (req, res) => {
+  const newMessage = {
+    message: req.body.message,
+    userId: req.body.userId
+  };
+  db.Message.create(newMessage)
     .then(response => {
       console.log(response);
       res.status(200).end();
