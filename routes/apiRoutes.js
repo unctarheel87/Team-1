@@ -18,7 +18,7 @@ router.get("/api/users", (req, res) => {
 //login user
 router.post("/api/login", passport.authenticate("local"), function(req, res) {
   console.log(req.user);
-  res.json("sucess");
+  res.json(`/${req.user.username}/profile`);
 });
 
 // fetch individual user by id
@@ -72,7 +72,7 @@ router.post("/api/users", (req, res) => {
     lastName: req.body.lastName,
     username: req.body.username,
     password: req.body.password,
-    img: req.body.img
+    image: req.body.image
   };
   db.User.create(newUser)
     .then(response => {
