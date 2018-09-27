@@ -27,8 +27,8 @@
                 <i class="large material-icons">account_circle</i>
                 <!-- Modal Trigger -->
                 <br>
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Login</a>
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Register</a>
+                <a class="waves-effect waves-light btn modal-trigger" data-target="modal1">Login</a>
+                <a class="waves-effect waves-light btn modal-trigger" data-target="modal2">Register</a>
             <!-- Login Modal Structure -->
             <div id="vue-home-form">
                 <div id="modal1" class="modal">
@@ -95,7 +95,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="image" type="text" name="image" class="validate">
+                                <input id="image" type="url" name="image" class="validate">
                                 <label for="image">Image URL</label>
                             </div>
                         </div>
@@ -118,10 +118,10 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="js/login.js"></script>
 
-      	<!--Vue & Axios Scripts-->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="js/index.js"></script>
+			<!--Vue & Axios Scripts-->
+			<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+			<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+			<script src="js/index.js"></script>
     </body>
   
 </html>
