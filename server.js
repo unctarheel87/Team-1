@@ -28,6 +28,7 @@ app.use(express.static("public"));
 
 // Routes
 app.use(require("./routes/apiRoutes"));
+app.use(require("./routes/htmlRoutes"));
 
 var syncOptions = { force: true };
 
