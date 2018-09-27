@@ -19,7 +19,8 @@ new Vue({
         image: event.target.image.value
       };
       console.log(formData);
-      $.post("/api/users", formData)
+      axios
+        .post("/api/users", formData)
         .then(response => console.log(response))
         .catch(err => console.log(err));
     },
@@ -30,7 +31,8 @@ new Vue({
         password: event.target.password.value
       };
       console.log(formData);
-      $.post("/api/login", formData)
+      axios
+        .post("/api/login", formData)
         .then(response => {
           window.location.replace(response.data);
         })
