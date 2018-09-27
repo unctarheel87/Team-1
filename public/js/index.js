@@ -1,5 +1,5 @@
 const app = new Vue({
-  el: "#app",
+  el: "#vue-home-form",
   data: {
     message: "This is working"
   },
@@ -29,12 +29,15 @@ const app = new Vue({
     handleSubmit(event) {
       event.preventDefault();
       let formData = {
+        firstName: event.target.firstName.value,
+        lastName: event.target.lastName.value,
         username: event.target.username.value,
-        password: event.target.password.value
+        password: event.target.password.value,
+        image: event.target.image.value
       };
       console.log(formData);
       axios
-        .post("/api/login", formData)
+        .post("/api/users", formData)
         .then(response => console.log(response))
         .catch(err => console.log(err));
     }

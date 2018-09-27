@@ -26,20 +26,23 @@
                 </span>
                 <i class="large material-icons">account_circle</i>
                 <!-- Modal Trigger -->
+                <br>
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Login</a>
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Register</a>
             <!-- Login Modal Structure -->
+            <div id="vue-home-form">
                 <div id="modal1" class="modal">
                 <div class="modal-content">
                     <h4>Welcome Back!</h4>
                     <div class="row">
                         <form class="center-align input-field col s6">
-                            <input id="username" type="text" class="validate">
+                            <input id="username-login" type="text" class="validate">
                             <label for="username">Username</label>
                         </form>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="password" type="password" class="validate">
+                            <input id="password-login" type="password" class="validate">
                             <label for="password">Password</label>
                         </div>
                     </div>
@@ -48,9 +51,9 @@
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Login</a>
                 </div>
                 </div>
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Register</a>
             <!-- Register Modal Structure -->
             <div id="modal2" class="modal">
+                <form v-on:submit.prevent="handleSubmit">
                 <div class="modal-content">
                     <nav>
                         <div class="nav-wrapper cyan darken-2">
@@ -65,34 +68,41 @@
                     </nav>
                     <br>
                     <h4>Welcome!</h4>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate">
-                            <label for="first_name">First Name</label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="first_name" type="text" name="firstName" class="validate">
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="last_name" type="text" name="lastName" class="validate">
+                                <label for="last_name">Last Name</label>
+                            </div>     
                         </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">Last Name</label>
-                        </div>     
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="username" type="text" class="validate">
-                            <label for="username">Username</label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="username" type="text" name="username" class="validate">
+                                <label for="username">Username</label>
+                            </div>
+                            
                         </div>
-                        
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="password" type="password" class="validate">
-                            <label for="password">Password</label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="password" type="password" name="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="image" type="text" name="image" class="validate">
+                                <label for="image">Image URL</label>
+                            </div>
+                        </div>
 
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Join Us!</a>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn modal-close waves-effect waves-green btn-flat">Join Us!</button>
+                    </div>
+                </form>
             </div>
             </div>
             </div>
@@ -105,6 +115,11 @@
       <script src="https://code.jquery.com/jquery.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="js/login.js"></script>
+
+      	<!--Vue & Axios Scripts-->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="js/index.js"></script>
     </body>
   
 </html>
