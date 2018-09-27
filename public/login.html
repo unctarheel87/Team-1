@@ -32,24 +32,26 @@
             <!-- Login Modal Structure -->
             <div id="vue-home-form">
                 <div id="modal1" class="modal">
-                <div class="modal-content">
-                    <h4>Welcome Back!</h4>
-                    <div class="row">
-                        <form class="center-align input-field col s6">
-                            <input id="username-login" type="text" class="validate">
-                            <label for="username">Username</label>
-                        </form>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="password-login" type="password" class="validate">
-                            <label for="password">Password</label>
+                <form v-on:submit.prevent="handleLogin">
+                    <div class="modal-content">
+                        <h4>Welcome Back!</h4>
+                        <div class="row">
+                            <div class="center-align input-field col s6">
+                                <input id="username-login" type="text" name="username" class="validate">
+                                <label for="username">Username</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="password-login" type="password" name="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Login</a>
-                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn modal-close waves-effect waves-green btn-flat">Login</button>
+                    </div>
+                 </form>   
                 </div>
             <!-- Register Modal Structure -->
             <div id="modal2" class="modal">
