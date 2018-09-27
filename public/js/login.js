@@ -19,8 +19,7 @@ new Vue({
         image: event.target.image.value
       };
       console.log(formData);
-      axios
-        .post("/api/users", formData)
+      $.post("/api/users", formData)
         .then(response => console.log(response))
         .catch(err => console.log(err));
     },
