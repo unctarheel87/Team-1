@@ -30,8 +30,7 @@ new Vue({
         password: event.target.password.value
       };
       console.log(formData);
-      axios
-        .post("/api/login", formData)
+      $.post("/api/login", formData)
         .then(response => {
           window.location.replace(response.data);
         })
