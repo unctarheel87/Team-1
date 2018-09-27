@@ -1,16 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "Grape777!",
+    "password": "bootcamp",
     "database": "penpal_db",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "port" : "3307"
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "bootcamp",
-    "database": "database_test",
+    "database": "testdb",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

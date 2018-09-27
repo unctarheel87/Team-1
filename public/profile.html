@@ -12,51 +12,52 @@
     </head>
 
     <body id="profileback">
-      <nav class="teal lighten-1 fixed" role="navigation">
-        <div class="nav-wrapper container">
-          <a id="logo-container" href="#" class="brand-logo">International Pen-Pals</a>
-        </div>
-      </nav>
-      <div class="row">
-        <div class="col s3 light-green lighten-4" id="basic-info">
-            <!-- This is where the users logo will appear when chosen during registration...should we include a button for the user to change their avatar at any time? -->
-            <div class="col s6">
-              <img class="responsive-img circle section" src="images/avatar.jpg">
-            </div>
-            <br>
-          <div class="center-align">
-              <h5>Username Here</h5>
-              <h6>Full Name</h6> 
-              <h6>Email</h6>
-            </div>
-        </div>
+      <div id="vue-profile">
+        <nav class="teal lighten-1 fixed" role="navigation">
+          <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">International Pen-Pals</a>
+          </div>
+        </nav>
+        <div class="row">
+          <div class="col s3 light-green lighten-4" id="basic-info">
+              <!-- This is where the users logo will appear when chosen during registration...should we include a button for the user to change their avatar at any time? -->
+              <div class="col s6">
+                <img class="responsive-img circle section" src="images/avatar.jpg">
+              </div>
+              <br>
+            <div class="center-align">
+                <h5>{{ user.username }}</h5>
+                <h6>{{ user.firstName }} {{ user.lastName }}</h6> 
+                <h6>Email</h6>
+              </div>
+          </div>
 
-        <section class="col s9 full-width" id="penpal">
-          <div class="col s12 m8">
-            <div class="card-panel grey lighten-5 z-depth-1">
-              <div class="row valign-wrapper">
-                <div class="col s2">
-                  <a href="chat.html">
-                    <img src="images/penavatar.jpg" alt="" class="circle responsive-img">
-                  </a> 
-                </div>
-                <a href="#!" class="collection-item right-align">
-                  <span class="new badge">3</span>
-                </a>
-                <div class="col s10">
-                  <span class="black-text">
-                    Pen-Pal Username.
-                    Some indication of the user being active and if there's any new messages will also be shown here
-                  </span>
-                  
+          <section class="col s9 full-width" id="penpal">
+            <div class="col s12 m8">
+              <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row valign-wrapper">
+                  <div class="col s2">
+                    <a href="chat.html">
+                      <img src="images/penavatar.jpg" alt="" class="circle responsive-img">
+                    </a> 
+                  </div>
+                  <a href="#!" class="collection-item right-align">
+                    <span class="new badge">3</span>
+                  </a>
+                  <div class="col s10">
+                    <span class="black-text">
+                      <p>Welcome {{ user.username }}!</p>
+                      Some indication of the user being active and if there's any new messages will also be shown here
+                    </span>
+                    
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
+        </div>
       </div>
-     
       <footer class="page-footer teal lighten-1">
           <div class="container">
           </div>
@@ -70,7 +71,11 @@
 
       <!--JavaScript at end of body for optimized loading-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script src="js/login.js"></script>
+      <!--Vue & Axios Scripts-->
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      
+       <script src="js/profile.js"></script>
     </body>
   </html>
         
