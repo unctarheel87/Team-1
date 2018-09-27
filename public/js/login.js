@@ -2,6 +2,10 @@ $(document).ready(function() {
   $(".modal").modal();
 });
 
+$(document).ready(function(){
+  $("select").formSelect();
+});
+
 //Vue instance
 new Vue({
   el: "#vue-home-form",
