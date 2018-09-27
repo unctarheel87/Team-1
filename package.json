@@ -9,6 +9,9 @@
     "lint": "eslint **/*.js --quiet",
     "fix": "eslint --fix ."
   },
+  "engines": {
+    "node": "10.11.0"
+  },
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.1",
