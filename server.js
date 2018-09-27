@@ -30,7 +30,8 @@ app.use(express.static("public"));
 app.use(require("./routes/apiRoutes"));
 app.use(require("./routes/htmlRoutes"));
 
-var syncOptions = { force: true };
+// true means tear and recreate database each time, false means only create things if they don't already exist
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

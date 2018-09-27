@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var Message = sequelize.define("Message", {
     message: {
       type: DataTypes.BLOB,
-      allowNull: false,
+      allowNull: true,
       validate: {
         // need to investigate BLOB
         len: [1, 255]
@@ -11,8 +11,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Message.associate = function(models) {
     // associations can be defined here
-    console.log(models);
+    Message.belongsTo(models.User);
   };
-
   return Message;
 };
