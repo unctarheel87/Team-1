@@ -36,20 +36,8 @@ module.exports = function(sequelize, DataTypes) {
   });
   User.associate = function(models) {
     // associations can be defined here
-    User.hasMany(models.Interest, {
-      foreignKey: {
-        name: "userId",
-        allowNull: false
-      },
-      onDelete: "cascade"
-    });
-    User.hasMany(models.Message, {
-      foreignKey: {
-        name: "userId",
-        allowNull: false
-      },
-      onDelete: "cascade"
-    });
+    User.hasMany(models.Interest);
+    User.hasMany(models.Message);
   };
 
   User.prototype.validPassword = function(password) {

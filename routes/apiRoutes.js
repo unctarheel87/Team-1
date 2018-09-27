@@ -3,6 +3,7 @@ var db = require("../models");
 var passport = require("../config/passport");
 var isAutenticated = require("../config/middleware/isAuthenticated");
 
+// fetch all users
 router.get("/api/users", (req, res) => {
   db.User.findAll({})
     .then(response => {
@@ -20,9 +21,41 @@ router.post("/api/login", passport.authenticate("local"), function(req, res) {
   res.json(`/${req.user.username}/profile`);
 });
 
-// get individual user
-router.get("/api/users/:username", isAutenticated, (req, res) => {
-  db.User.findAll({ where: { userName: req.params.username } })
+// fetch individual user by id
+// router.get("/api/users/:id", isAutenticated, (req, res) => {
+//   db.User.findAll({ where: { userName: req.params.id } })
+//     .then(response => {
+//       res.json(response);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).end();
+//     });
+// });
+
+// fetch user along with their interests and messages
+// fetch individual user by id
+
+// had to remove isAutenticated for now for testing - John, should I add it back as isAutenticated?
+
+router.get("/api/users/:id", isAutenticated, (req, res) => {
+  console.log("---------------- route is reached-------------------");
+  db.User.findAll({
+    include: [
+      {
+        model: db.Interest,
+        where: {
+          userId: req.params.id
+        }
+      },
+      {
+        model: db.Message,
+        where: {
+          userId: req.params.id
+        }
+      }
+    ]
+  })
     .then(response => {
       res.json(response);
     })
@@ -55,8 +88,7 @@ router.post("/api/users", (req, res) => {
 //create interest
 router.post("/api/interests", (req, res) => {
   const newInterest = {
-    interest: req.body.interest,
-    userId: req.body.userId
+    interest: req.body.interest
   };
   console.log(newInterest);
   db.Interest.create(newInterest)
@@ -73,8 +105,7 @@ router.post("/api/interests", (req, res) => {
 //create message
 router.post("/api/messages", (req, res) => {
   const newMessage = {
-    message: req.body.message,
-    userId: req.body.userId
+    message: req.body.message
   };
   db.Message.create(newMessage)
     .then(response => {
@@ -87,6 +118,7 @@ router.post("/api/messages", (req, res) => {
     });
 });
 
+// update user by id - not needed for initial release
 router.put("/api/users/:id", (req, res) => {
   const newUser = {
     username: req.body.username,
@@ -108,6 +140,7 @@ router.put("/api/users/:id", (req, res) => {
     });
 });
 
+// delete user by id - not needed for initial release
 router.delete("/api/users/:id", (req, res) => {
   db.User.destroy({
     where: {
