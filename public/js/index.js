@@ -39,7 +39,9 @@ const app = new Vue({
       console.log(formData);
       axios
         .post("/api/login", formData)
-        .then(response => console.log(response))
+        .then(response => {
+            window.location.replace(response.data);
+        })
         .catch(err => console.log(err));
     }
   }
