@@ -1,7 +1,7 @@
 {
-  "name": "node-handlebars-sequelize-boilerplate",
+  "name": "team-1-pen-pal",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
+  "description": "International Pen Pal App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
