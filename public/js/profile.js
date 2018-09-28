@@ -1,3 +1,11 @@
+$(document).ready(function() {
+  $(".modal").modal();
+});
+
+$(document).ready(function(){
+  $("select").formSelect();
+});
+
 //Vue instance
 const profile = new Vue({
   el: "#vue-profile",
