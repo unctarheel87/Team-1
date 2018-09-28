@@ -2,6 +2,10 @@ $(document).ready(function() {
   $(".modal").modal();
 });
 
+$(document).ready(function(){
+  $("select").formSelect();
+});
+
 //Vue instance
 new Vue({
   el: "#vue-home-form",
@@ -21,7 +25,10 @@ new Vue({
       console.log(formData);
       axios
         .post("/api/users", formData)
-        .then(response => console.log(response))
+        .then(response => {
+          console.log(response);
+          $("#modal2").modal("close");
+        })
         .catch(err => console.log(err));
     },
     handleLogin(event) {
@@ -34,6 +41,7 @@ new Vue({
       axios
         .post("/api/login", formData)
         .then(response => {
+          $("#modal1").modal("close");
           window.location.replace(response.data);
         })
         .catch(err => console.log(err));
