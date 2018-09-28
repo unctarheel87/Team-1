@@ -4,6 +4,16 @@ var passport = require("../config/passport");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 var findBestMatch = require("../routes/matchLogic");
 
+//------------------GET ROUTES for user login------------------//
+
+// login user
+router.post("/api/login", passport.authenticate("local"), function(req, res) {
+  console.log(req.user);
+  res.json(`/${req.user.username}/profile`);
+});
+
+//------------------GET ROUTES------------------//
+
 // get all users
 router.get("/api/users", (req, res) => {
   db.User.findAll({})
@@ -14,12 +24,6 @@ router.get("/api/users", (req, res) => {
       console.log(err);
       res.status(500).end();
     });
-});
-
-// login user
-router.post("/api/login", passport.authenticate("local"), function(req, res) {
-  console.log(req.user);
-  res.json(`/${req.user.username}/profile`);
 });
 
 // get user, interests, messages by id
@@ -41,6 +45,48 @@ router.get("/api/users/currentUser", (req, res) => {
       res.status(500).end();
     });
 });
+
+// get route for retrieving a single message
+router.get("/api/messages/:id", (req, res) => {
+  console.log(
+    "---------------- get message by id + data route is reached-------------------"
+  );
+  db.Message.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbMessage => {
+      console.log(dbMessage);
+      res.json(dbMessage);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
+// get route for retrieving a single interest
+router.get("/api/interests/:id", (req, res) => {
+  console.log(
+    "---------------- get interest by id + data route is reached-------------------"
+  );
+  db.Interest.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbInterest => {
+      console.log(dbInterest);
+      res.json(dbInterest);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
+//------------------POST ROUTES------------------//
 
 // create user
 router.post("/api/users", (req, res) => {
@@ -98,25 +144,19 @@ router.post("/api/messages", (req, res) => {
     });
 });
 
-// get route for retrieving a single message
-router.get("/api/messages/:id", (req, res) => {
-  console.log(
-    "---------------- get message by id + data route is reached-------------------"
-  );
-  db.Message.findOne({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(dbMessage => {
-      console.log(dbMessage);
-      res.json(dbMessage);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).end();
-    });
+// matching
+router.post("/api/match", (req, res) => {
+  const userProfile = req.body.userProfile;
+  console.log(JSON.stringify(userProfile) + " sent to api!");
+  db.User.findAll({
+    include: { model: db.Interest }
+  }).then(response => {
+    res.json(findBestMatch(response, userProfile));
+  });
 });
+
+
+//------------------PUT ROUTES------------------//
 
 // update message by id
 router.put("/api/messages/", (req, res) => {
@@ -136,46 +176,6 @@ router.put("/api/messages/", (req, res) => {
         console.log(dbMessage);
         res.json(dbMessage);
       }
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).end();
-    });
-});
-
-// delete message by id - not needed for initial release --> not tested, has bugs
-router.delete("/api/messages/", (req, res) => {
-  db.Message.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(response => {
-      if (response.changedRows === 0) {
-        return res.status(404).end();
-      } else {
-        res.status(200).end();
-      }
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).end();
-    });
-});
-
-// get route for retrieving a single interest
-router.get("/api/interests/:id", (req, res) => {
-  console.log(
-    "---------------- get interest by id + data route is reached-------------------"
-  );
-  db.Interest.findOne({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(dbInterest => {
-      console.log(dbInterest);
-      res.json(dbInterest);
     })
     .catch(err => {
       console.log(err);
@@ -208,14 +208,52 @@ router.put("/api/interests/", (req, res) => {
     });
 });
 
-router.post("/api/match", (req, res) => {
-  const userProfile = req.body.userProfile;
-  console.log(JSON.stringify(userProfile) + " sent to api!");
-  db.User.findAll({
-    include: { model: db.Interest }
-  }).then(response => {
-    res.json(findBestMatch(response, userProfile));
-  });
+//------------------DELETE ROUTES------------------//
+
+// delete message by id 
+router.delete("/api/messages/", (req, res) => {
+  console.log(
+    "---------------- delete interest by id + data route is reached-------------------"
+  );
+  db.Message.destroy({
+    where: {
+      id: req.body.id
+    }
+  })
+    .then(response => {
+      if (response.changedRows === 0) {
+        return res.status(404).end();
+      } else {
+        res.status(200).end();
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
+// delete interest by id 
+router.delete("/api/interests/", (req, res) => {
+  console.log(
+    "---------------- delete interest by id + data route is reached-------------------"
+  );
+  db.Interest.destroy({
+    where: {
+      id: req.body.id
+    }
+  })
+    .then(response => {
+      if (response.changedRows === 0) {
+        return res.status(404).end();
+      } else {
+        res.status(200).end();
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).end();
+    });
 });
 
 module.exports = router;
