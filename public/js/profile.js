@@ -11,8 +11,9 @@ const profile = new Vue({
   el: "#vue-profile",
   data: {
     user: {},
+    userMatch: {},
     hasInterests: false,
-    userMatch: ""
+    errorMessage: ""
   },
   methods: {
     getData: function() {
@@ -23,6 +24,7 @@ const profile = new Vue({
           if (this.user.Interests.length > 0) {
             this.hasInterests = true;
           }
+          this.getMatchData();
         })
         .catch(function(error) {
           console.log(error);
@@ -55,11 +57,21 @@ const profile = new Vue({
           axios
             .post("/api/match", userProfile)
             .then(response => {
-              this.userMatch = response.data;
+              this.errorMessage = response.data;
             })
             .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
+    },
+    getMatchData() {
+      axios
+        .get(`/api/users/${this.user.matchId}`)
+        .then(response => {
+          this.userMatch = response.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 });

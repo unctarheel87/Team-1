@@ -19,13 +19,21 @@
         </div>
       </nav>
       <h4 class="center-align heading">My Letters</h4>
-      <Letter 
-              v-for="letter in user.Messages"
-              :letter = "letter.message"
-              :created = "letter.createdAt"
-              :username = "user.username"
+      <Letter
+            v-for="letter in user.Messages"
+            :letter = "letter.message"
+            :created = "letter.createdAt"
+            :username = "user.username"
       >
       </Letter>
+      <Letter
+            v-for="letter in userMatch.Messages"
+            :letter = "letter.message"
+            :created = "letter.createdAt"
+            :username = "userMatch.username"
+      >
+      </Letter>
+
       <div class="row" id="message">
         <div class="col m12">
           <div class="card-panel white z-depth-1">

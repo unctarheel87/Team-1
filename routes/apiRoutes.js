@@ -59,6 +59,16 @@ router.get("/api/messages/:id", (req, res) => {
     .then(dbMessage => {
       console.log(dbMessage);
       res.json(dbMessage);
+// get one user
+router.get("/api/users/:id", (req, res) => {
+  db.User.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [{ model: db.Interest }, { model: db.Message }]
+  })
+    .then(response => {
+      res.json(response);
     })
     .catch(err => {
       console.log(err);
@@ -254,6 +264,27 @@ router.delete("/api/interests/", (req, res) => {
       console.log(err);
       res.status(500).end();
     });
+});
+
+router.post("/api/match", (req, res) => {
+  const userProfile = req.body.userProfile;
+  console.log(JSON.stringify(userProfile) + " sent to api!");
+  db.User.findAll({
+    include: { model: db.Interest }
+  }).then(response => {
+    const match = findBestMatch(response, userProfile);
+    if (!match) {
+      return res.json("Sorry there are no available matches");
+    }
+    db.User.update({ matchId: match.id }, { where: { id: req.user.id } })
+      .then(() => {
+        db.User.update({ matchId: req.user.id }, { where: { id: match.id } });
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.log(err));
+  });
 });
 
 module.exports = router;

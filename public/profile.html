@@ -3,6 +3,7 @@
       <head>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
       <!--Import materialize.css-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
       <link rel="stylesheet" href="css/style.css"
@@ -15,7 +16,7 @@
       <div id="vue-profile">
         <nav class="teal lighten-1 fixed" role="navigation">
           <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">International Pen-Pals</a>
+            <a id="logo-container" href="/" class="brand-logo">Ssi</a>
           </div>
         </nav>
         <div class="row">
@@ -109,16 +110,43 @@
                         <p><i>Looks like you haven't completed your profile...</i></p>
                         <a class="waves-effect waves-light btn modal-trigger center-align" data-target="modal2">Add Interests</a>
                       </div>
+                      <div v-if="!userMatch">
                       <button class="waves-effect waves-light btn" v-on:click="findMatch">Find my Penpal</button>
-                      {{ userMatch }}
+                      </div>
+                      <div v-if="userMatch">
+                        <a class="waves-effect waves-light btn" href="letters">Write a Letter</a>
+                      </div>
                     </span>
-                    
+                    <p>{{ errorMessage }} </p>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
+          <div v-if="userMatch">
+          <section class="col s9 full-width" id="penpal">
+            <h5 id="match-text">Your Match:</h5>
+              <div class="col s12 m8">
+                <div class="card-panel grey lighten-5 z-depth-1">
+                  <div class="row valign-wrapper">
+                    <div class="col s2">
+                      <a href="letters">
+                        <img src="images/penavatar.jpg" alt="" class="circle responsive-img">
+                      </a> 
+                    </div>
+                    <div class="col s10">
+                      <span class="black-text">
+                        <p>{{ userMatch.firstName }} {{ userMatch.lastName }} </p>
+                        <p>{{ userMatch.username }} </p>
+                      </span>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
 
