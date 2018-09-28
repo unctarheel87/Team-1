@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "bootcamp",
-    "database": "penpal_db",
-    "host": "127.0.0.1",
+    "username": "rbrye9new2opmrm1",
+    "password": "ky37ybkwel115qpu",
+    "database": "xave5b3z8vhtvdtn",
+    "host": "i5x1cqhq5xbqtv00.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
