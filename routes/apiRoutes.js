@@ -55,10 +55,12 @@ router.get("/api/messages/:id", (req, res) => {
     where: {
       id: req.params.id
     }
-  })
-    .then(dbMessage => {
-      console.log(dbMessage);
-      res.json(dbMessage);
+  }).then(dbMessage => {
+    console.log(dbMessage);
+    res.json(dbMessage);
+  });
+});
+
 // get one user
 router.get("/api/users/:id", (req, res) => {
   db.User.findOne({
@@ -165,7 +167,6 @@ router.post("/api/match", (req, res) => {
   });
 });
 
-
 //------------------PUT ROUTES------------------//
 
 // update message by id
@@ -220,7 +221,7 @@ router.put("/api/interests/", (req, res) => {
 
 //------------------DELETE ROUTES------------------//
 
-// delete message by id 
+// delete message by id
 router.delete("/api/messages/", (req, res) => {
   console.log(
     "---------------- delete interest by id + data route is reached-------------------"
@@ -243,7 +244,7 @@ router.delete("/api/messages/", (req, res) => {
     });
 });
 
-// delete interest by id 
+// delete interest by id
 router.delete("/api/interests/", (req, res) => {
   console.log(
     "---------------- delete interest by id + data route is reached-------------------"
