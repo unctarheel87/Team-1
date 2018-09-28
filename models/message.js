@@ -1,10 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var Message = sequelize.define("Message", {
     message: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        // need to investigate BLOB
         len: [1, 255]
       }
     }
