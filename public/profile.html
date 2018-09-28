@@ -27,10 +27,117 @@
               <br>
             <div class="center-align">
                 <h5>{{ user.username }}</h5>
-                <h6>{{ user.firstName }} {{ user.lastName }}</h6> 
-                <h6>Email</h6>
+                <h6>{{ user.firstName }} {{ user.lastName }}</h6>
+                <h6>Email</h6> 
               </div>
           </div>
+          <a class="waves-effect waves-light btn modal-trigger center-align" data-target="modal2">Register</a>
+          <div id="modal2" class="modal">
+            <form v-on:submit.prevent="handleSubmit">
+            <div class="modal-content">
+                <nav>
+                    <div class="nav-wrapper cyan darken-2">
+                        <div class="col s12">
+                            <a href="#!" class="breadcrumb">Step 1</a>
+                            <!-- Step 2 will make the user select their top 5-10 interests -->
+                            <a href="#!" class="breadcrumb">Step 2</a>
+                            <!-- Result stage shows their pen pal match -->
+                            <a href="#!" class="breadcrumb">Result!</a>
+                        </div>
+                    </div>
+                </nav>
+                <br>
+                <h4>Welcome!</h4>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" name="firstName" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" name="lastName" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>     
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="username" type="text" name="username" class="validate">
+                            <label for="username">Username</label>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="password" type="password" name="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="image" type="url" name="image" class="validate">
+                            <label for="image">Image URL</label>
+                        </div>
+                    </div>
+                    <p>Rank how much you enjoy doing these activities on a scale from 1 (least) - 5 (most).</p>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Cooking</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Reading</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Exercising</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Video Games</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Drawing</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn modal-close waves-effect waves-green btn-flat">Join Us!</button>
+                </div>
+            </form>
+        </div>
 
           <section class="col s9 full-width" id="penpal">
             <div class="col s12 m8">
@@ -58,18 +165,10 @@
 
         </div>
       </div>
-      <footer class="page-footer teal lighten-1">
-          <div class="container">
-          </div>
-              <div class="footer-copyright">
-                  <div class="container">
-                  © 2018 Copyright
-                  <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-              </div>
-          </div>
-      </footer>
+
 
       <!--JavaScript at end of body for optimized loading-->
+      <script src="https://code.jquery.com/jquery.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <!--Vue & Axios Scripts-->
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
