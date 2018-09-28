@@ -8,18 +8,29 @@ function compareScores(user1, user2) {
 }
 
 function findBestMatch(user1, user2) {
+  const eligUsers = [];
   for (let i = 0; i < user1.length; i++) {
-    if (user1[i].id === user2.id) {
-      user1.splice(i, 1);
+    if (
+      user1[i].id === user2.id ||
+      user1[i].Interests.length === 0 ||
+      user1[i].matchId
+    ) {
+      eligUsers;
+    } else {
+      console.log("push");
+      eligUsers.push(user1[i]);
     }
   }
   const matchArr = [];
-  for (let i = 0; i < user1.length; i++) {
-    let totalDifference = compareScores(user1[i].Interests, user2.Interests);
+  for (let i = 0; i < eligUsers.length; i++) {
+    let totalDifference = compareScores(
+      eligUsers[i].Interests,
+      user2.Interests
+    );
     matchArr.push(totalDifference);
   }
   let lowestDiffIndex = matchArr.indexOf(Math.min(...matchArr));
-  return user1[lowestDiffIndex].username;
+  return eligUsers[lowestDiffIndex];
 }
 
 module.exports = findBestMatch;

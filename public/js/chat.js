@@ -21,7 +21,8 @@ Vue.component("Letter", {
 const letters = new Vue({
   el: "#vue-chat",
   data: {
-    user: {}
+    user: {},
+    userMatch: {}
   },
   methods: {
     getData: function() {
@@ -29,6 +30,7 @@ const letters = new Vue({
         .get("/api/users/currentUser")
         .then(response => {
           this.user = response.data[0];
+          this.getMatchData();
         })
         .catch(function(error) {
           console.log(error);
@@ -47,6 +49,16 @@ const letters = new Vue({
           this.getData();
         })
         .catch(err => console.log(err));
+    },
+    getMatchData() {
+      axios
+        .get(`/api/users/${this.user.matchId}`)
+        .then(response => {
+          this.userMatch = response.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 });
