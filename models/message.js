@@ -10,7 +10,12 @@ module.exports = function(sequelize, DataTypes) {
   });
   Message.associate = function(models) {
     // associations can be defined here
-    Message.belongsTo(models.User);
+    Message.belongsTo(models.User, {
+      foreignKey: {
+        name: "userId",
+        allowNull: false
+      }
+    });
   };
   return Message;
 };

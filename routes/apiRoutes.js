@@ -74,7 +74,8 @@ router.post("/api/users", (req, res) => {
 // create interest
 router.post("/api/interests", (req, res) => {
   const newInterest = {
-    interest: req.body.interest
+    interest: req.body.interest,
+    userId: 3
   };
   console.log(newInterest);
   db.Interest.create(newInterest)
@@ -91,8 +92,10 @@ router.post("/api/interests", (req, res) => {
 // create message
 router.post("/api/messages", (req, res) => {
   const newMessage = {
-    message: req.body.message
+    message: req.body.message,
+    userId: req.user.id
   };
+  console.log(newMessage);
   db.Message.create(newMessage)
     .then(response => {
       console.log(response);
