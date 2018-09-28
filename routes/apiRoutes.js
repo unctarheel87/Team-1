@@ -1,7 +1,8 @@
 var router = require("express").Router();
 var db = require("../models");
 var passport = require("../config/passport");
-var isAutenticated = require("../config/middleware/isAuthenticated");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+var findBestMatch = require("../routes/matchLogic");
 
 // get all users
 router.get("/api/users", (req, res) => {
@@ -22,25 +23,15 @@ router.post("/api/login", passport.authenticate("local"), function(req, res) {
 });
 
 // get user, interests, messages by id
-router.get("/api/users/:id", isAutenticated, (req, res) => {
+router.get("/api/users/currentUser", (req, res) => {
   console.log(
     "---------------- get user + data by id route is reached-------------------"
   );
   db.User.findAll({
-    include: [
-      {
-        model: db.Interest,
-        where: {
-          userId: req.params.id
-        }
-      },
-      {
-        model: db.Message,
-        where: {
-          userId: req.params.id
-        }
-      }
-    ]
+    where: {
+      id: req.user.id
+    },
+    include: [{ model: db.Interest }, { model: db.Message }]
   })
     .then(response => {
       res.json(response);
@@ -73,12 +64,12 @@ router.post("/api/users", (req, res) => {
 
 // create interest
 router.post("/api/interests", (req, res) => {
-  const newInterest = {
-    interest: req.body.interest,
-    userId: 3
-  };
-  console.log(newInterest);
-  db.Interest.create(newInterest)
+  const newInterests = [];
+  for (let interest of req.body.interests) {
+    newInterests.push({ interest, UserId: req.user.id });
+  }
+  console.log(newInterests);
+  db.Interest.bulkCreate(newInterests)
     .then(response => {
       console.log(response);
       res.status(200).end();
@@ -93,7 +84,7 @@ router.post("/api/interests", (req, res) => {
 router.post("/api/messages", (req, res) => {
   const newMessage = {
     message: req.body.message,
-    userId: req.user.id
+    UserId: req.user.id
   };
   console.log(newMessage);
   db.Message.create(newMessage)
@@ -215,6 +206,16 @@ router.put("/api/interests/", (req, res) => {
       console.log(err);
       res.status(500).end();
     });
+});
+
+router.post("/api/match", (req, res) => {
+  const userProfile = req.body.userProfile;
+  console.log(JSON.stringify(userProfile) + " sent to api!");
+  db.User.findAll({
+    include: { model: db.Interest }
+  }).then(response => {
+    res.json(findBestMatch(response, userProfile));
+  });
 });
 
 module.exports = router;

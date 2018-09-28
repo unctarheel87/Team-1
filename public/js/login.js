@@ -2,7 +2,7 @@ $(document).ready(function() {
   $(".modal").modal();
 });
 
-$(document).ready(function(){
+$(document).ready(function() {
   $("select").formSelect();
 });
 
@@ -44,7 +44,10 @@ new Vue({
           $("#modal1").modal("close");
           window.location.replace(response.data);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          this.message = "Username password is incorrect...";
+          console.log(err);
+        });
     }
   }
 });
