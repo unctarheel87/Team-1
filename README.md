@@ -1,6 +1,6 @@
-# Ssi - [she] – Korean honorific used amongst people of approximately equal speech level. If the speaker is more familiar with someone.
+# ssi International Pen Pal app - "ssi" [pronounced she] is a Korean honorific (denoting respect) used when speaking to someone you are more familiar with.
 
-
+* In this application, the user registers, rates their interests, then is matched to another user with similar interests. Then they can post "letters" to their match.
 
 # Technologies Used
 * Sequelize
