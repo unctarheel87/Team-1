@@ -32,24 +32,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     image: {
       type: DataTypes.STRING
+    },
+    matchId: {
+      type: DataTypes.INTEGER
     }
   });
   User.associate = function(models) {
     // associations can be defined here
-    User.hasMany(models.Interest, {
-      onDelete: "cascade",
-      constraints: true,
-      foreignKey: {
-        name: "userId"
-      }
-    });
-    User.hasMany(models.Message, {
-      onDelete: "cascade",
-      constraints: true,
-      foreignKey: {
-        name: "userId"
-      }
-    });
+    User.hasMany(models.Interest);
+    User.hasMany(models.Message);
   };
 
   User.prototype.validPassword = function(password) {

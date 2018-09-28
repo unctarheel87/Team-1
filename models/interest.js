@@ -9,12 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Interest.associate = function(models) {
-    Interest.belongsTo(models.User, {
-      foreignKey: {
-        name: "userId",
-        allowNull: false
-      }
-    });
+    Interest.belongsTo(models.User);
   };
 
   return Interest;

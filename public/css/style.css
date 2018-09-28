@@ -2,6 +2,10 @@ nav {
     z-index: 1;
 }
 
+#chatback {
+    font-family: 'Handlee', cursive;
+}
+
 
 #loginback  {
     background: url("../images/map.jpg")
@@ -25,13 +29,14 @@ nav {
 }
 
 #message    {
-    position: absolute;
+    position: relative;
     width: 65%;
     /* padding: 20px; */
     left: 0;
     bottom: 0;
     text-align: right;
     margin-left: 15%;
+    margin-top: 60px;
 }
 
 #chatUser   {
@@ -40,4 +45,21 @@ nav {
     left: 55%;
     bottom: 0;
 
+}
+
+.letter-box {
+    position: relative;
+    width: 45%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.heading {
+    margin: 40px 0;
+}
+
+.username-letter {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
 }

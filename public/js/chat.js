@@ -1,10 +1,39 @@
+Vue.component("Letter", {
+  data: function() {
+    return {
+      user: {}
+    };
+  },
+  props: ["letter", "username", "created"],
+  template: `
+    <div class="card-panel white z-depth-1 letter-box"> 
+      <div class="row">
+        <div class="input-field col m12">
+          <h5>{{ letter }}</h5>
+        </div>
+      </div>
+      <p class="username-letter"><span class="badge">{{ username }}</span>{{ created }}</p>
+    </div>
+  `
+});
+
 //Vue instance
-new Vue({
+const letters = new Vue({
   el: "#vue-chat",
   data: {
-    message: ""
+    user: {}
   },
   methods: {
+    getData: function() {
+      axios
+        .get("/api/users/currentUser")
+        .then(response => {
+          this.user = response.data[0];
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
     handleSubmit(event) {
       event.preventDefault();
       let formData = {
@@ -15,8 +44,11 @@ new Vue({
         .post("/api/messages", formData)
         .then(response => {
           console.log(response);
+          this.getData();
         })
         .catch(err => console.log(err));
     }
   }
 });
+
+letters.getData();
