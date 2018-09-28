@@ -58,6 +58,7 @@ const profile = new Vue({
             .post("/api/match", userProfile)
             .then(response => {
               this.errorMessage = response.data;
+              this.getData();
             })
             .catch(err => console.log(err));
         })
