@@ -28,6 +28,7 @@ new Vue({
         .then(response => {
           console.log(response);
           $("#modal2").modal("close");
+          window.location.replace(response.data);
         })
         .catch(err => console.log(err));
     },

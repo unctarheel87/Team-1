@@ -24,6 +24,7 @@
       <h4 class="center-align heading">My Letters</h4>
       <Letter
             v-for="letter in user.Messages"
+            v-on:remove-msg="removeMsg(letter.id)"
             :letter = "letter.message"
             :created = "letter.createdAt"
             :username = "user.username"
