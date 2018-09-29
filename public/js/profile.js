@@ -13,6 +13,7 @@ const profile = new Vue({
     user: {},
     userMatch: {},
     hasInterests: false,
+    hasMatch: false,
     errorMessage: ""
   },
   methods: {
@@ -23,6 +24,9 @@ const profile = new Vue({
           this.user = response.data[0];
           if (this.user.Interests.length > 0) {
             this.hasInterests = true;
+          }
+          if (this.user.matchId) {
+            this.hasMatch = true;
           }
           this.getMatchData();
         })

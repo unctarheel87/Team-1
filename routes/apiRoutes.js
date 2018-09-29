@@ -279,6 +279,7 @@ router.post("/api/match", (req, res) => {
       })
       .then(response => {
         console.log(response);
+        res.json("");
       })
       .catch(err => console.log(err));
   });
