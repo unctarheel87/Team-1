@@ -1,17 +1,17 @@
 var router = require("express").Router();
 var path = require("path");
-var isAutenticated = require("../config/middleware/isAuthenticated");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
-router.get("/:username/profile", isAutenticated, (req, res) => {
+router.get("/:username/profile", isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, "../public/profile.html"));
 });
 
 
-router.get("/:username/letters", isAutenticated, (req, res) => {
+router.get("/:username/letters", isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, "../public/chat.html"));
 });
 

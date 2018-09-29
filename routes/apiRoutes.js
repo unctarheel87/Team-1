@@ -98,6 +98,13 @@ router.get("/api/interests/:id", (req, res) => {
     });
 });
 
+router.get("/api/logout", function(req, res) {
+  req.logout();
+  console.log(req.session);
+  console.log(req.user);
+  res.json("/");
+});
+
 //------------------POST ROUTES------------------//
 
 // create user
@@ -154,17 +161,6 @@ router.post("/api/messages", (req, res) => {
       console.log(err);
       res.status(500).end();
     });
-});
-
-// matching
-router.post("/api/match", (req, res) => {
-  const userProfile = req.body.userProfile;
-  console.log(JSON.stringify(userProfile) + " sent to api!");
-  db.User.findAll({
-    include: { model: db.Interest }
-  }).then(response => {
-    res.json(findBestMatch(response, userProfile));
-  });
 });
 
 //------------------PUT ROUTES------------------//
