@@ -118,8 +118,9 @@ router.post("/api/users", (req, res) => {
   };
   db.User.create(newUser)
     .then(response => {
-      console.log(response);
-      res.status(200).end();
+      passport.authenticate("local")(req, res, () => {
+        res.status(200).json(`/${req.user.username}/profile`);
+      });
     })
     .catch(err => {
       console.log(err);
@@ -218,13 +219,13 @@ router.put("/api/interests/", (req, res) => {
 //------------------DELETE ROUTES------------------//
 
 // delete message by id
-router.delete("/api/messages/", (req, res) => {
+router.delete("/api/messages/:id", (req, res) => {
   console.log(
     "---------------- delete interest by id + data route is reached-------------------"
   );
   db.Message.destroy({
     where: {
-      id: req.body.id
+      id: req.params.id
     }
   })
     .then(response => {

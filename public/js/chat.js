@@ -13,6 +13,7 @@ Vue.component("Letter", {
         </div>
       </div>
       <p class="username-letter"><span class="badge">{{ username }}</span>{{ created }}</p>
+      <button v-on:click="$emit('remove-msg')">X</button>
     </div>
   `
 });
@@ -66,6 +67,15 @@ const letters = new Vue({
         .then(response => {
           console.log(response);
           window.location.replace(response.data);
+        })
+        .catch(err => console.log(err));
+    },
+    removeMsg(letterId) {
+      axios
+        .delete(`/api/messages/${letterId}`)
+        .then(response => {
+          console.log(response);
+          this.getData();
         })
         .catch(err => console.log(err));
     }
