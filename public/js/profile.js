@@ -73,6 +73,15 @@ const profile = new Vue({
         .catch(function(error) {
           console.log(error);
         });
+    },
+    logout() {
+      axios
+        .get("/api/logout")
+        .then(response => {
+          console.log(response);
+          window.location.replace(response.data);
+        })
+        .catch(err => console.log(err));
     }
   }
 });

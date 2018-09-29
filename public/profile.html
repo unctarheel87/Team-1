@@ -17,13 +17,16 @@
         <nav class="teal lighten-1 fixed" role="navigation">
           <div class="nav-wrapper container">
             <a id="logo-container" href="/" class="brand-logo">Ssi</a>
+            <div class="right-align">
+              <button class="btn waves-effect waves-green" v-on:click="logout">Logout</button>
+            </div>
           </div>
         </nav>
         <div class="row">
           <div class="col s3 light-green lighten-4" id="basic-info">
               <!-- This is where the users logo will appear when chosen during registration...should we include a button for the user to change their avatar at any time? -->
               <div class="col s6">
-                <img class="responsive-img circle section" src="images/avatar.jpg">
+                <img class="responsive-img circle section" v-bind:src="user.image">
               </div>
               <br>
             <div class="center-align">
@@ -111,6 +114,7 @@
                         <a class="waves-effect waves-light btn modal-trigger center-align" data-target="modal2">Add Interests</a>
                       </div>
                       <div v-if="!userMatch">
+                      <p>Profile is complete!</p>
                       <button class="waves-effect waves-light btn" v-on:click="findMatch">Find my Penpal</button>
                       </div>
                       <div v-if="userMatch">
@@ -132,12 +136,12 @@
                   <div class="row valign-wrapper">
                     <div class="col s2">
                       <a href="letters">
-                        <img src="images/penavatar.jpg" alt="" class="circle responsive-img">
+                        <img v-bind:src="userMatch.image" alt="" class="circle responsive-img">
                       </a> 
                     </div>
                     <div class="col s10">
                       <span class="black-text">
-                        <p>{{ userMatch.firstName }} {{ userMatch.lastName }} </p>
+                        <h5>{{ userMatch.firstName }} {{ userMatch.lastName }} </h5>
                         <p>{{ userMatch.username }} </p>
                       </span>
                       
