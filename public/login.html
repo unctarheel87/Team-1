@@ -1,117 +1,121 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-      <link rel="stylesheet" href="css/style.css">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
 
-  <body id="loginback">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body id="loginback">
     <nav class="teal lighten-1" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Ssi</a>
-      </div>
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Ssi</a>
+        </div>
     </nav>
-      <br><br>
-      <div id="index-banner">
+    <br><br>
+    <div id="index-banner">
         <div class="container center">
-        <div class="row">
-        <div class="col s8 m6 center">
-            <div class="blue-grey lighten-5 z-depth-3">
-            <div class="card-content black-text>">
-                <span class="card-title center">
+            <div class="row">
+                <div class="col s8 m6 center">
+                    <div class="blue-grey lighten-5 z-depth-3">
+                        <div class="card-content black-text>">
+                            <span class="card-title center">
                 <h3>Welcome!</h3>
                 </span>
-                <i class="large material-icons">account_circle</i>
-                <!-- Modal Trigger -->
-                <br>
-                <a class="waves-effect waves-light btn modal-trigger" data-target="modal1">Login</a>
-                <a class="waves-effect waves-light btn modal-trigger" data-target="modal2">Register</a>
-            <!-- Login Modal Structure -->
-            <div id="vue-home-form">
-                <div id="modal1" class="modal">
-                <form v-on:submit.prevent="handleLogin">
-                    <div class="modal-content">
-                        <h4>Welcome Back!</h4>
-                        <div class="row">
-                            <div class="center-align input-field col s6">
-                                <input id="username-login" type="text" name="username" class="validate">
-                                <label for="username">Username</label>
+                            <i class="large material-icons">account_circle</i>
+                            <!-- Modal Trigger -->
+                            <br>
+                            <a class="waves-effect waves-light btn modal-trigger" data-target="modal1">Login</a>
+                            <a class="waves-effect waves-light btn modal-trigger" data-target="modal2">Register</a>
+                            <!-- Login Modal Structure -->
+                            <div id="vue-home-form">
+                                <div id="modal1" class="modal">
+                                    <form v-on:submit.prevent="handleLogin">
+                                        <div class="modal-content">
+                                            <h4>Welcome Back!</h4>
+                                            <div class="row">
+                                                <div class="center-align input-field col s6">
+                                                    <input id="username-login" type="text" name="username" class="validate">
+                                                    <label for="username">Username</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s6">
+                                                    <input id="password-login" type="password" name="password" class="validate">
+                                                    <label for="password">Password</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p><i>{{ message }}</i></p>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn waves-effect waves-green btn-flat">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Register Modal Structure -->
+                                <div id="modal2" class="modal">
+                                    <form v-on:submit.prevent="handleSubmit">
+                                        <div class="modal-content">
+                                            <br>
+                                            <h4>Welcome!</h4>
+                                            <div class="row">
+                                                <div class="input-field col s6">
+                                                    <input id="first_name" type="text" name="firstName" class="validate">
+                                                    <label for="first_name">First Name</label>
+                                                </div>
+                                                <div class="input-field col s6">
+                                                    <input id="last_name" type="text" name="lastName" class="validate">
+                                                    <label for="last_name">Last Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s6">
+                                                    <input id="username" type="text" name="username" class="validate">
+                                                    <label for="username">Username</label>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s6">
+                                                    <input id="password" type="password" name="password" class="validate">
+                                                    <label for="password">Password</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s6">
+                                                    <input id="image" type="url" name="image" class="validate">
+                                                    <label for="image">Image URL</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn waves-effect waves-green btn-flat">Join Us!</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="password-login" type="password" name="password" class="validate">
-                                <label for="password">Password</label>
-                            </div>
-                        </div>
+                        <br><br>
                     </div>
-                    <p><i>{{ message }}</i></p>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn waves-effect waves-green btn-flat">Login</button>
-                    </div>
-                 </form>   
                 </div>
-            <!-- Register Modal Structure -->
-            <div id="modal2" class="modal">
-                <form v-on:submit.prevent="handleSubmit">
-                <div class="modal-content">
-                    <br>
-                    <h4>Welcome!</h4>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="first_name" type="text" name="firstName" class="validate">
-                                <label for="first_name">First Name</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="last_name" type="text" name="lastName" class="validate">
-                                <label for="last_name">Last Name</label>
-                            </div>     
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="username" type="text" name="username" class="validate">
-                                <label for="username">Username</label>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="password" type="password" name="password" class="validate">
-                                <label for="password">Password</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="image" type="url" name="image" class="validate">
-                                <label for="image">Image URL</label>
-                            </div>
-                        </div>
+                <footer>
+                    <div class="container">
+                        Copyright &copy;
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn waves-effect waves-green btn-flat">Join Us!</button>
-                    </div>
-                </form>
-            </div>
-            </div>
-            </div>
-        <br><br>
-        </div>
-        </div>
-    
-        
-      <!--JavaScript at end of body for optimized loading-->
-      <script src="https://code.jquery.com/jquery.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <!--Vue & Axios Scripts-->
-      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-            
-      <script src="/js/login.js"></script>
-    </body>
-  
+                </footer>
+
+                <!--JavaScript at end of body for optimized loading-->
+                <script src="https://code.jquery.com/jquery.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                <!--Vue & Axios Scripts-->
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+                <script src="/js/login.js"></script>
+</body>
+
 </html>
-        
