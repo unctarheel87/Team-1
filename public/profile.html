@@ -113,11 +113,11 @@
                         <p><i>Looks like you haven't completed your profile...</i></p>
                         <a class="waves-effect waves-light btn modal-trigger center-align" data-target="modal2">Add Interests</a>
                       </div>
-                      <div v-if="!userMatch">
-                      <p>Profile is complete!</p>
-                      <button class="waves-effect waves-light btn" v-on:click="findMatch">Find my Penpal</button>
+                      <div v-if="!hasMatch && hasInterests">
+                        <p>Profile is complete!</p>
+                        <button class="waves-effect waves-light btn" v-on:click="findMatch">Find my Penpal</button>
                       </div>
-                      <div v-if="userMatch">
+                      <div v-if="hasMatch">
                         <a class="waves-effect waves-light btn" href="letters">Write a Letter</a>
                       </div>
                     </span>
@@ -128,7 +128,7 @@
             </div>
           </section>
 
-          <div v-if="userMatch">
+          <div v-if="hasMatch">
           <section class="col s9 full-width" id="penpal">
             <h5 id="match-text">Your Match:</h5>
               <div class="col s12 m8">
